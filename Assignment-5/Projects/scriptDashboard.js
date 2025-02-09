@@ -23,8 +23,8 @@ function renderProducts(productsToRender) {
             <h3>${product.title}</h3>
             <p>$${product.price}</p>
             <p>${product.category}</p>
-            <button class="btn" onclick="editProduct(${product.id})">Edit</button>
-            <button class="btn" onclick="deleteProduct(${product.id})">Delete</button>
+            <button class="btn btn-warning" onclick="editProduct(${product.id})">Edit</button>
+            <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
         </div>
     `).join('');
 }
@@ -58,8 +58,7 @@ async function filterByCategory() {
 function applyLimit() {
     const limit = document.getElementById('limitInput').value;
     if (limit) {
-        const limited = products.slice(0, parseInt(limit));
-        renderProducts(limited);
+        renderProducts(products.slice(0, parseInt(limit)));
     }
 }
 
@@ -70,48 +69,12 @@ function openAddModal() {
     modal.style.display = 'block';
 }
 
-function logout() {
-    window.location.href = "index.html";
-}
-
 function closeModal() {
     modal.style.display = 'none';
 }
 
-async function handleProductSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const productData = Object.fromEntries(formData.entries());
-
-    try {
-        const response = await fetch('https://fakestoreapi.com/products', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(productData)
-        });
-        const result = await response.json();
-        console.log('Product added:', result);
-        closeModal();
-        fetchProducts();
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-// Delete product
-async function deleteProduct(id) {
-    if (confirm('Are you sure you want to delete this product?')) {
-        try {
-            await fetch(`https://fakestoreapi.com/products/${id}`, {
-                method: 'DELETE'
-            });
-            fetchProducts();
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
+function logout() {
+    window.location.href = "index.html";
 }
 
 // Initial load
