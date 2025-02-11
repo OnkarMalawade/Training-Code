@@ -49,23 +49,23 @@
             <form id="productForm" onsubmit="handleProductSubmit(event)">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" required>
+                    <input type="text" name="title" placeholder="Product title" required>
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="number" name="price" step="0.01" required>
+                    <input type="number" name="price" step="0.01" placeholder="Product price" required>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea name="description" required></textarea>
+                    <textarea name="description" placeholder="Product description" required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Category</label>
-                    <input type="text" name="category" required>
+                    <input type="text" name="category" placeholder="Product category" required>
                 </div>
                 <div class="form-group">
                     <label>Image URL</label>
-                    <input type="url" name="image" required>
+                    <input type="url" name="image" placeholder="Product image URL" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
