@@ -103,11 +103,44 @@
 
 // console.log(Mheros);
 
-function createPeople({name2: string, age: number}):void{
-    this.name2 = name2;
-    this.age = age;
+// function createPeople({name2: string, age: number}):void{
+//     this.name2 = name2;
+//     this.age = age;
+// }
+// let newPeople = {name2: "Onkar", age: 20, email: "onkar@dd.com"};
+// createPeople(newPeople);
+
+interface People{
+    name: string;
+    age: number;
 }
-let newPeople = {name2: "Onkar", age: 20, email: "onkar@dd.com"};
-createPeople(newPeople);
+
+interface Manager extends People{
+    role: string;
+}
+
+let emp1: Manager = {
+    name: "Onkar",
+    age: 20,
+    role: "Branch Manager"
+}
+
+console.log(emp1);
+
+interface Employee{
+    people: People;
+    role : string;
+}
+
+let emp2: Employee = {
+    people: {
+        name: "AAA",
+        age: 20
+    },
+    role: "Branch IT"
+}
+
+console.log(emp2);
+
 
 export {}
