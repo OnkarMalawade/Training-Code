@@ -153,5 +153,71 @@ const user6 : Record<string, User3> = {
 
 console.log(user6);
 
+const arr1: string[] = ["Hello", "World"];
+const arr2: number[] = [1, 2, 3];
+const arr3: Array<string> = ["Hello", "World"];
+const arr4: Array<number> = [1, 2, 3];
+
+console.log(arr1);
+console.log(arr2);
+console.log(arr3);
+console.log(arr4);
+
+const arr5: Array<string | number> = ["Hello", 1];
+console.log(arr5);
+
+const arr6: (string | number)[] = ["Hello", 1];
+console.log(arr6);
+
+type User4 = {
+    name : string;
+    age : number;
+}
+
+const allUsers : Array<User4> = [
+    { name : "Onkar", age : 20 },
+    { name : "Uzaif", age : 90 }
+];
+
+console.log(allUsers);
+// [ { name: 'Onkar', age: 20 }, { name: 'Uzaif', age: 90 } ]
+
+const allUsers1 : User4[] = [
+    { name : "Onkar", age : 20 },
+    { name : "Uzaif", age : 90 }
+];
+
+console.log(allUsers1);
+// [ { name: 'Onkar', age: 20 }, { name: 'Uzaif', age: 90 } ]
+
+const arr9 : number[] = [33, 18, 65];
+console.log(arr9)
+
+const arr8 : string[] = ["onkar", "uzaif", "bhushanDDS"];
+console.log(arr8)
+
+const arr7 : number | string [] = ["oo", "uu", "bb"]
+console.log(arr7)
+
+// solved error of above line by using below line
+const arr10 : (number | string)[] = ["oo", "uu", "bb", 1, 2, 3]
+console.log(arr10)
+
+// Tuple
+// Tuple is a fixed size array whose elements are of different types.
+const tuple1 : [number, string] = [10, "Hello"];
+console.log(tuple1);
+
+const tuple2 : [number | string] = [ "Hello"];
+console.log(tuple2);
+
+// const seatallocation : "Diva S1" | "Madgoan A1" | "Thivim B1";
+let seatallocation : "Diva S1" | "Madgoan A1" | "Thivim B1";
+seatallocation = "Diva S1";
+seatallocation = "Madgoan A1";
+seatallocation = "Thivim B1";
+// seatallocation = "Diva S2"; // Error
+console.log(seatallocation);
+
 export {};
 // use of export {} is to avoid the error of "Cannot redeclare block-scoped variable 'user'." because of the same variable name in other files.

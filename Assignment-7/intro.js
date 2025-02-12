@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function f1(args) {
     return args;
 }
@@ -87,3 +89,39 @@ var user6 = {
     "2": { name: "Onkar", age: 20 }
 };
 console.log(user6);
+var arr1 = ["Hello", "World"];
+var arr2 = [1, 2, 3];
+var arr3 = ["Hello", "World"];
+var arr4 = [1, 2, 3];
+console.log(arr1);
+console.log(arr2);
+console.log(arr3);
+console.log(arr4);
+var arr5 = ["Hello", 1];
+console.log(arr5);
+var arr6 = ["Hello", 1];
+console.log(arr6);
+var allUsers = [
+    { name: "Onkar", age: 20 },
+    { name: "Uzaif", age: 90 }
+];
+console.log(allUsers);
+// [ { name: 'Onkar', age: 20 }, { name: 'Uzaif', age: 90 } ]
+var allUsers1 = [
+    { name: "Onkar", age: 20 },
+    { name: "Uzaif", age: 90 }
+];
+console.log(allUsers1);
+// [ { name: 'Onkar', age: 20 }, { name: 'Uzaif', age: 90 } ]
+var arr9 = [33, 18, 65];
+console.log(arr9);
+var arr8 = ["onkar", "uzaif", "bhushanDDS"];
+console.log(arr8);
+var arr7 = ["oo", "uu", "bb"];
+console.log(arr7);
+var seatallocation;
+seatallocation = "Diva S1";
+seatallocation = "Madgoan A1";
+seatallocation = "Thivim B1";
+console.log(seatallocation);
+// use of export {} is to avoid the error of "Cannot redeclare block-scoped variable 'user'." because of the same variable name in other files.
