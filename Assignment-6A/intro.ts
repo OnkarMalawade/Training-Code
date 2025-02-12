@@ -142,5 +142,4 @@ let emp2: Employee = {
 
 console.log(emp2);
 
-
 export {}
