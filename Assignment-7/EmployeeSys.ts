@@ -1,16 +1,16 @@
-interface Employee {
+interface IEmployee {
     id: number;
     name: string;
     position: string;
     salary: number;
 }
-interface Manager extends Employee {
+interface IManager extends IEmployee {
     teamSize: number;
 }
 class Departments {
-    private employees: Employee[] = []
+    private employees: IEmployee[] = []
     constructor(){}
-    addEmployee(employee: Employee): void {
+    addEmployee(employee: IEmployee): void {
         this.employees.push(employee);
     }
     removeEmployee(id: number) : void {
@@ -46,4 +46,32 @@ console.log("After Removal:");
 dept.listEmployees();
 
 // storage generics
+class GenericStorage<T> {
+    private storage: T[] = [];
 
+    addItem(item: T): void {
+        this.storage.push(item);
+    }
+
+    removeItem(item: T): void {
+        this.storage = this.storage.filter(storedItem => storedItem !== item);
+    }
+
+    getAll(): T[] {
+        return this.storage;
+    }
+}
+
+function updateSalary<T extends IEmployee>(employee: T, newSalary: number): T {
+    return { ...employee, salary: newSalary };
+}
+
+const storage = new GenericStorage<number>();
+storage.addItem(10);
+storage.addItem(20);
+console.log("Storage Items:", storage.getAll());
+storage.removeItem(10);
+console.log("After Removing 10:", storage.getAll());
+
+const updatedEmployee = updateSalary({ id: 2, name: "Bob", position: "Manager", salary: 70000 }, 80000);
+console.log("Updated Employee Salary:", updatedEmployee);
