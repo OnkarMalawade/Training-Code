@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Fake Store Admin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-4">
+        <h2 class="text-center">Fake Store - Products</h2>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fake Store</a>
+                <button id="navbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="category.html">Category</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Admin</a></li>
+                    </ul>
+                    <button class="btn btn-danger ms-auto" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h2>Products Management</h2>
+        <div class="controls">
+            <button class="btn btn-primary" onclick="openAddModal()">Add Product</button>
+            <select id="categoryFilter" onchange="filterByCategory()">
+                <option value="">All Categories</option>
+            </select>
+            <input type="number" id="limitInput" placeholder="Limit results" min="1">
+            <button class="btn btn-secondary" onclick="applyLimit()">Apply Limit</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Add Product</h3>
+            <form id="productForm" onsubmit="handleProductSubmit(event)">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" placeholder="Product title" required>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" name="price" step="0.01" placeholder="Product price" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" placeholder="Product description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" name="category" placeholder="Product category" required>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" name="image" placeholder="Product image URL" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scriptDashboard.js"></script>
+</body>
+</html>
