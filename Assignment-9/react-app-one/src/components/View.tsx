@@ -9,6 +9,14 @@ const View = () => {
     const [email, setEmail] = useState<string>('')
     const [phoneNumber, setPhoneNumber] = useState<string>('')
     const [address, setAddress] = useState<string>('')
+
+    const skillOptions = ["JavaScript", "React", "Node.js", "Python", "C++"];
+
+    const handleSkillsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+      setSkills(selectedOptions);
+    };
+
   return (
     <div>
       <h1>My First React App</h1>
@@ -22,12 +30,13 @@ const View = () => {
         <input value={gender} type='radio' placeholder='Enter your gender' name='gender' onChange={() => setGender("Male")} />Male
         <input value={gender} type='radio' placeholder='Enter your gender' name='gender' onChange={() => setGender("Female")} />Female
         <br />
-        <input value={skills} type='checkbox' placeholder='Enter your skills' onChange={(e) => setSkills(e.target.value.split(','))} />
-        <input value={skills} type='checkbox' placeholder='Enter your skills' onChange={(e) => setSkills(e.target.value.split(','))} />
-        <input value={skills} type='checkbox' placeholder='Enter your skills' onChange={(e) => setSkills(e.target.value.split(','))} />
-        <input value={skills} type='checkbox' placeholder='Enter your skills' onChange={(e) => setSkills(e.target.value.split(','))} />
-        <input value={skills} type='checkbox' placeholder='Enter your skills' onChange={(e) => setSkills(e.target.value.split(','))} />
-        <br />
+        <select multiple value={skills} onChange={handleSkillsChange}>
+          {skillOptions.map((skill) => (
+            <option key={skill} value={skill}>
+              {skill}
+            </option>
+          ))}
+        </select>
         <input value={email} type='email' placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} />
         <br />
         <input value={phoneNumber} type='tel' placeholder='Enter your phone number' onChange={(e) => setPhoneNumber(e.target.value)} />
