@@ -50,7 +50,7 @@ const View = () => {
           <br />
           Your gender is: {gender}
           <br />
-          Your skills are: {skills}
+          Your skill is: {skills}
           <br />
           Your email is: {email}
           <br />
