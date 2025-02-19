@@ -14,7 +14,7 @@ function App() {
           setHasData(true);
         }
       })
-      .catch(() => setHasData(false)); // Handle fetch errors
+      .catch(() => setHasData(false));
   }, []);
 
   return (
