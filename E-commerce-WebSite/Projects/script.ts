@@ -1,27 +1,37 @@
-const productsGrid = document.getElementById('productsGrid') as HTMLElement | null;
+const productsGrid = document.getElementById(
+  "productsGrid"
+) as HTMLElement | null;
 
 if (!productsGrid) {
-    throw new Error('Products grid element not found');
+  throw new Error("Products grid element not found");
 }
 
 function fetchProducts() {
-    fetch('https://fakestoreapi.com/products')
-        .then(response => response.json())
-        .then((products: Product[]) => renderProducts(products))
-        .catch(error => console.error('Error:', error));
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((products: Product[]) => renderProducts(products))
+    .catch((error) => console.error("Error:", error));
 }
+// try1
+type inRate = {
+  rate: number;
+  count: number;
+};
 
 interface Product {
-    id: number;
-    title: string;
-    price: number;
-    category: string;
-    image: string;
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+  rating: inRate;
 }
 
 function renderProducts(products: Product[]): void {
-    if (productsGrid) {
-        productsGrid.innerHTML = products.map(product => `
+  if (productsGrid) {
+    productsGrid.innerHTML = products
+      .map(
+        (product) => `
             <div class="col-md-4">
                 <div class="card mb-3">
                     <img src="${product.image}" class="card-img-top" alt="${product.title}" style="height: 200px; object-fit: contain;">
@@ -29,11 +39,14 @@ function renderProducts(products: Product[]): void {
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">$${product.price}</p>
                         <p class="card-text"><small class="text-muted">${product.category}</small></p>
+                        <p class="card-text">Rating: ${product.rating.rate} (${product.rating.count})</p>
                     </div>
                 </div>
             </div>
-        `).join('');
-    }
+        `
+      )
+      .join("");
+  }
 }
 
 fetchProducts();

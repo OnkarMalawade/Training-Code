@@ -1,0 +1,16 @@
+Prop Drilling
+Parent to Child to Grand Child
+as chaning asel tr __prop__ pathavavw lagtat tr code motha bulky hoto tya sathi apan te useContext use krto
+parent la provide kel ki prun last end node prynt tsch rahhat
+
+useContext
+
+createContext
+
+Theme light dark to try
+
+memo ask
+
+useRef
+stateFull stateLess
+
