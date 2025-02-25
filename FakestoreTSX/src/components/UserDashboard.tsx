@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://fakestoreapi.com/products";
 
@@ -38,6 +39,19 @@ const UserDashboard = ({ handleLogout }) => {
       }}
     >
       <h2 style={{ textAlign: "center", color: "#333" }}>User Dashboard</h2>
+      <Link
+        to="/category"
+        style={{
+          display: "block",
+          textAlign: "center",
+          margin: "10px 0",
+          textDecoration: "none",
+          color: "#007BFF",
+          fontWeight: "bold",
+        }}
+      >
+        Browse by Category
+      </Link>
       <button
         onClick={handleLogout}
         style={{
