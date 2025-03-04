@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useAuthStore from "../auth/authStore";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {
@@ -8,16 +9,22 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [loginError, setLoginError] = useState("");
-    const { login } = useAuthStore();
+    const { login, token } = useAuthStore();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token) {
+            navigate("/products");
+        }
+    }, [token, navigate]);
 
     const onSubmit = (data) => {
         if (data.email === "admin@g.com" && data.password === "admin123") {
-            login("Barobar");
-            setLoginError("");
+            login();
             alert("Login Successful");
+            navigate("/products");
         } else {
-            setLoginError("Invalid email or password");
+            alert("Invalid email or password");
         }
     };
 
@@ -59,11 +66,6 @@ const Login = () => {
                                     message:
                                         "Password must be at least 6 characters",
                                 },
-                                maxLength: {
-                                    value: 20,
-                                    message:
-                                        "Password must be at most 20 characters",
-                                },
                             })}
                             className="w-full p-2 border rounded mt-1"
                         />
@@ -74,11 +76,6 @@ const Login = () => {
                         )}
                     </div>
 
-                    {loginError && (
-                        <p className="text-red-500 text-sm mb-3">
-                            {loginError}
-                        </p>
-                    )}
                     <button
                         type="submit"
                         className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
