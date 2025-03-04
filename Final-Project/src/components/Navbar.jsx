@@ -23,27 +23,51 @@ const Navbar = () => {
 
             {/* Navigation Links */}
             <ul className="flex space-x-6 items-center">
-                {token && ( // ✅ Show only if user is logged in
+                {token && (
                     <li>
                         <Link to="/products" className="hover:text-gray-300">
                             Products
                         </Link>
                     </li>
                 )}
-                {token && ( // show all Carts
+                {token && (
                     <li>
                         <Link to="/users" className="hover:text-gray-300">
                             Users
                         </Link>
                     </li>
                 )}
-                {token && ( // show all Carts
+
+                {token && (
+                    <li>
+                        <Link to="/quotes" className="hover:text-gray-300">
+                            Quotes
+                        </Link>
+                    </li>
+                )}
+
+                {token && (
                     <li>
                         <Link to="/carts" className="hover:text-gray-300">
                             All Carts
                         </Link>
                     </li>
                 )}
+                {token && (
+                    <li>
+                        <Link to="/orders" className="hover:text-gray-300">
+                            Orders
+                        </Link>
+                    </li>
+                )}
+                {token && (
+                    <li>
+                        <Link to="/posts" className="hover:text-gray-300">
+                            Blog
+                        </Link>
+                    </li>
+                )}
+
                 {/* ✅ Cart Button with Dynamic Count */}
                 {token && (
                     <li>

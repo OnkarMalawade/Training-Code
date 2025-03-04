@@ -14,6 +14,11 @@ import Carts from "./components/Carts";
 import UserList from "./components/UserList";
 import UserDetails from "./components/UserDetails";
 import EditUser from "./components/EditUser";
+import OrderList from "./components/OrderList"; // ✅ Import Orders Page
+import OrderDetails from "./components/OrderDetails"; // ✅ Import Order Details Page
+import PostList from "./components/PostList"; // ✅ Import Blog Posts
+import PostDetails from "./components/PostDetails"; // ✅ Import Post Details
+import MottoList from "./components/MottoList";
 
 const ProtectedRoute = ({ element }) => {
     const { token } = useAuthStore();
@@ -53,6 +58,30 @@ function App() {
                 <Route
                     path="/users/edit/:id"
                     element={<ProtectedRoute element={<EditUser />} />}
+                />
+
+                {/* ✅ Orders Routes */}
+                <Route
+                    path="/orders"
+                    element={<ProtectedRoute element={<OrderList />} />}
+                />
+                <Route
+                    path="/orders/:id"
+                    element={<ProtectedRoute element={<OrderDetails />} />}
+                />
+
+                {/* ✅ Blog Posts Routes */}
+                <Route
+                    path="/posts"
+                    element={<ProtectedRoute element={<PostList />} />}
+                />
+                <Route
+                    path="/posts/:id"
+                    element={<ProtectedRoute element={<PostDetails />} />}
+                />
+                <Route
+                    path="/quotes"
+                    element={<ProtectedRoute element={<MottoList />} />}
                 />
             </Routes>
         </Router>
