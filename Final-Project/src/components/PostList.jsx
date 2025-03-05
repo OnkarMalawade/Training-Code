@@ -21,7 +21,8 @@ const PostList = () => {
         queryFn: fetchPosts,
     });
 
-    if (isLoading) return <p className="text-center">Loading posts...</p>;
+    if (isLoading)
+        return <p className="text-center text-gray-600">Loading posts...</p>;
     if (error)
         return (
             <p className="text-center text-red-500">Error: {error.message}</p>
@@ -35,15 +36,25 @@ const PostList = () => {
                 {posts.map((post) => (
                     <div
                         key={post.id}
-                        className="bg-white shadow-md p-6 rounded-lg hover:shadow-lg"
+                        className="bg-white shadow-md p-6 rounded-lg hover:shadow-lg transition"
                     >
-                        <h3 className="text-xl font-semibold">{post.title}</h3>
-                        <p className="text-gray-600">
+                        <h3 className="text-xl font-semibold text-gray-800">
+                            {post.title}
+                        </h3>
+                        <p className="text-gray-600 mb-2">
                             {post.body.slice(0, 100)}...
                         </p>
+                        <p className="text-sm text-gray-500">
+                            Tags: {post.tags.join(", ")}
+                        </p>
+                        <div className="flex justify-between text-sm text-gray-600 mt-2">
+                            <p>Likes: {post.reactions.likes}</p>
+                            <p>Dislikes: {post.reactions.dislikes}</p>
+                            <p>Views: {post.views}</p>
+                        </div>
                         <Link
                             to={`/posts/${post.id}`}
-                            className="block text-center bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600"
+                            className="block text-center bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600 transition"
                         >
                             Read More
                         </Link>

@@ -91,28 +91,67 @@ const UserList = () => {
                     {filteredUsers.map((user) => (
                         <div
                             key={user.id}
-                            className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition"
+                            className="max-w-sm w-full lg:max-w-full lg:flex bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition"
                         >
-                            <h3 className="text-xl font-semibold text-gray-800">
-                                {user.firstName} {user.lastName}
-                            </h3>
-                            <p className="text-gray-600">Email: {user.email}</p>
-                            <p className="text-gray-600">Phone: {user.phone}</p>
-
-                            {/* View & Delete Buttons */}
-                            <div className="flex space-x-2 mt-4">
-                                <Link
-                                    to={`/users/${user.id}`}
-                                    className="flex-1 text-center bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
-                                >
-                                    View Details
-                                </Link>
-                                <button
-                                    onClick={() => handleDelete(user.id)}
-                                    className="flex-1 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition"
-                                >
-                                    Delete
-                                </button>
+                            <div
+                                className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center"
+                                style={{
+                                    backgroundImage: `url(${user.image})`,
+                                }}
+                                title={user.firstName}
+                            ></div>
+                            <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                                <div className="mb-8">
+                                    <p className="text-sm text-gray-600 flex items-center">
+                                        <svg
+                                            className="fill-current text-gray-500 w-3 h-3 mr-2"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                                        </svg>
+                                        Members only
+                                    </p>
+                                    <div className="text-gray-900 font-bold text-xl mb-2">
+                                        {user.firstName} {user.lastName}
+                                    </div>
+                                    <p className="text-gray-700 text-base">
+                                        Email: {user.email}
+                                    </p>
+                                    <p className="text-gray-700 text-base">
+                                        Phone: {user.phone}
+                                    </p>
+                                </div>
+                                <div className="flex items-center">
+                                    <img
+                                        className="w-10 h-10 rounded-full mr-4"
+                                        src={user.image}
+                                        alt={`Avatar of ${user.firstName}`}
+                                    />
+                                    <div className="text-sm">
+                                        <p className="text-gray-900 leading-none">
+                                            {user.username}
+                                        </p>
+                                        <p className="text-gray-600">
+                                            {user.birthDate}
+                                        </p>
+                                    </div>
+                                </div>
+                                {/* View & Delete Buttons */}
+                                <div className="flex space-x-2 mt-4">
+                                    <Link
+                                        to={`/users/${user.id}`}
+                                        className="flex-1 text-center bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+                                    >
+                                        View Details
+                                    </Link>
+                                    <button
+                                        onClick={() => handleDelete(user.id)}
+                                        className="flex-1 bg-red-500 text-white py-2 rounded hover:bg-red-600 transition"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
