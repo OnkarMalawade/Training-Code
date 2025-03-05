@@ -14,10 +14,10 @@ import Carts from "./components/Carts";
 import UserList from "./components/UserList";
 import UserDetails from "./components/UserDetails";
 import EditUser from "./components/EditUser";
-import OrderList from "./components/OrderList"; // ✅ Import Orders Page
-import OrderDetails from "./components/OrderDetails"; // ✅ Import Order Details Page
-import PostList from "./components/PostList"; // ✅ Import Blog Posts
-import PostDetails from "./components/PostDetails"; // ✅ Import Post Details
+import OrderList from "./components/OrderList";
+import OrderDetails from "./components/OrderDetails";
+import PostList from "./components/PostList";
+import PostDetails from "./components/PostDetails";
 import MottoList from "./components/MottoList";
 
 const ProtectedRoute = ({ element }) => {

@@ -136,10 +136,22 @@ const ProductList = () => {
                                     <p className="text-sm text-gray-500">
                                         Rating: {product.rating}
                                     </p>
+
+                                    <p className="text-sm text-gray-600">
+                                        {product.description.slice(0, 40)}...
+                                    </p>
                                 </div>
                                 <p className="text-sm font-medium text-gray-900">
                                     ${product.price}
                                 </p>
+                            </div>
+
+                            <div class="px-6 pt-4 pb-2">
+                                {product.tags.map((tag) => (
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                        #{tag}
+                                    </span>
+                                ))}
                             </div>
 
                             {/* ✅ Add to Cart Button */}

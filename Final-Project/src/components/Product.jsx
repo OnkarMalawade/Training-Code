@@ -92,12 +92,45 @@ const Product = () => {
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+            <img
+                alt={product.title}
+                src={product.thumbnail}
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+            />
+
             <h3 className="text-xl font-bold text-center text-gray-700 mb-4">
-                Edit Product: {product?.title}
+                {product.title}
             </h3>
-            <p className="text-gray-600 text-center mb-4">
-                Price: ${product?.price}
+            <p className="text-gray-600 text-center mb-2">
+                Price: ${product.price}
             </p>
+            <p className="text-gray-600 text-center mb-2">
+                Brand: {product.brand}
+            </p>
+            <p className="text-gray-600 text-center mb-2">
+                Category: {product.category}
+            </p>
+            <p className="text-gray-600 text-center mb-2">
+                Tags: {product.tags?.join(", ")}
+            </p>
+            <p className="text-gray-600 text-center mb-2">
+                Ratings: {product.rating} / 5
+            </p>
+            <p className="text-gray-600 text-center mb-4">
+                Description: {product.description}
+            </p>
+
+            <h4 className="text-lg font-semibold text-gray-700 mt-4">
+                Reviews:
+            </h4>
+            <ul className="list-disc pl-5 text-gray-600">
+                {product.reviews?.map((review, index) => (
+                    <li key={index}>
+                        <strong>{review.user}</strong>: {review.comment} (
+                        {review.rating} / 5)
+                    </li>
+                ))}
+            </ul>
 
             {state.message && (
                 <p className="text-center text-green-500 font-semibold">
@@ -127,8 +160,8 @@ const Product = () => {
                 <button
                     onClick={() =>
                         mutation.mutate({
-                            title: state.title,
-                            price: state.price,
+                            title: state.title || product.title,
+                            price: state.price || product.price,
                         })
                     }
                     className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300"
